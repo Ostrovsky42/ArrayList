@@ -325,15 +325,72 @@ namespace ArrayList
                 
             }
         }
-        public void AddList()
+        public void AddList(ArrayList list)
         {
-            if (Length == _array.Length)
+            int j = 0;
+            int[] tmpArray = new int[(int)((Length + list.Length) * 1.33 + 1)];
+            for (int i = 0; i < tmpArray.Length; i++)
             {
-                UpSize();
-            }
-           // int a = arr.Length;
-              Length++;
+                if (i <= Length)
+                {
+                    tmpArray[i] = _array[i];
+                }
+                else
+                {
+                    tmpArray[i] = list[j];
+                    j++;
+                }
+            } 
+            _array = tmpArray;
+            Length += list.Length;
         }
+
+        public void AddListFromTheBeing(ArrayList list)
+        {
+            int j = 0;
+            int[] tmpArray = new int[(int)((Length + list.Length) * 1.33 + 1)];
+            for (int i = 0; i < tmpArray.Length; i++)
+            {
+                if (i <= list.Length)
+                {
+                    tmpArray[i] = list[i];
+                }
+                else
+                {
+                    tmpArray[i] = _array[j];
+                    j++;
+                }
+            }
+            _array = tmpArray;
+            Length += list.Length;
+        }
+
+        public void AddListByIndex(ArrayList list, int index)
+        {
+            int j = 0;
+            int k = 0;
+            int[] tmpArray = new int[(int)((Length + list.Length) * 1.33 + 1)];
+            for (int i = 0; i < tmpArray.Length; i++)
+            {
+                if (i <= index)
+                {
+                    tmpArray[i] = _array[k];
+                    k++;
+                } 
+                else if (i <= index + list.Length)
+                {
+                    tmpArray[i] = list[j];
+                    j++;
+                }
+                else
+                {
+                    tmpArray[i] = _array[k];
+                }
+            }
+            _array = tmpArray;
+            Length += list.Length;
+        }
+        
         private void UpSize()
     {
         int newLenght = (int)(_array.Length * 1.33 + 1);
