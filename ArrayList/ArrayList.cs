@@ -71,29 +71,23 @@ namespace ArrayList
 
             _array = tmpArray;
         }
+       
         public void AddByIndex(int value, int index)
         {
-            if (index > Length - 1)
+            if (index > Length)
             {
                 throw new IndexOutOfRangeException();
             }
-            int j = 0;
             if (Length == _array.Length)
             {
                 UpSize();
             }
-            Length++;
-            int[] tmpArray = new int[Length];
-            for (int i = 0; i < Length; i++)
+            for (int i = Length - 1; i >= index; --i)
             {
-                if (i == index)
-                {
-                    tmpArray[i] = value;
-                    j++;
-                }
-                tmpArray[j] = _array[i];
-                j++;
+                _array[i + 1] = _array[i];
             }
+            _array[index] = value;
+            ++Length;
         }
         public void RemoveFromTheEnd()  
         {
@@ -103,7 +97,7 @@ namespace ArrayList
                 DownSize();
             }
         }
-        public void RemoveFromTheBeginning()
+        public void RemoveFront()
         {
 
             Length--;
@@ -151,7 +145,7 @@ namespace ArrayList
                 DownSize();
             }
         }                  
-        public void RemoveFromTheBeging(int n)
+        public void RemoveFront(int n)
         {
             if (n > Length)
             {
@@ -196,11 +190,8 @@ namespace ArrayList
                 {
                     index = i;
                     break;
-                }          
-                   
+                }        
             }
-
-
             return index;
         }      
         public void Revers()
@@ -212,7 +203,7 @@ namespace ArrayList
                 _array[Length - (i + 1)] = temp;
             }
         }
-        public int MaxVaulue()
+        public int MaxValue()
         {
             int max = _array[0];           
             for (int i = 1; i < Length; i++)
@@ -329,9 +320,9 @@ namespace ArrayList
         {
             int j = 0;
             int[] tmpArray = new int[(int)((Length + list.Length) * 1.33 + 1)];
-            for (int i = 0; i < tmpArray.Length; i++)
+            for (int i = 0; i < (Length + list.Length); ++i)
             {
-                if (i <= Length)
+                if (i < Length)
                 {
                     tmpArray[i] = _array[i];
                 }
@@ -340,7 +331,7 @@ namespace ArrayList
                     tmpArray[i] = list[j];
                     j++;
                 }
-            } 
+            }
             _array = tmpArray;
             Length += list.Length;
         }
@@ -349,9 +340,9 @@ namespace ArrayList
         {
             int j = 0;
             int[] tmpArray = new int[(int)((Length + list.Length) * 1.33 + 1)];
-            for (int i = 0; i < tmpArray.Length; i++)
+            for (int i = 0; i < (Length + list.Length); i++)
             {
-                if (i <= list.Length)
+                if (i < list.Length)
                 {
                     tmpArray[i] = list[i];
                 }
@@ -370,14 +361,14 @@ namespace ArrayList
             int j = 0;
             int k = 0;
             int[] tmpArray = new int[(int)((Length + list.Length) * 1.33 + 1)];
-            for (int i = 0; i < tmpArray.Length; i++)
+            for (int i = 0; i < (Length + list.Length); i++)
             {
-                if (i <= index)
+                if (i < index)
                 {
                     tmpArray[i] = _array[k];
                     k++;
                 } 
-                else if (i <= index + list.Length)
+                else if (i < index + list.Length)
                 {
                     tmpArray[i] = list[j];
                     j++;
@@ -385,6 +376,7 @@ namespace ArrayList
                 else
                 {
                     tmpArray[i] = _array[k];
+                    k++;
                 }
             }
             _array = tmpArray;
@@ -451,7 +443,7 @@ namespace ArrayList
 
     }
                                             //  Состояние             Тесты
-//добавление значения в конец                       +
+//добавление значения в конец                       +                   
 //добавление значения в начало                      +
 //добавление значения по индексу                    +
 //удаление из конца одного элемента                 +
@@ -474,7 +466,7 @@ namespace ArrayList
 //удаление по значению первого (?вернуть индекс)    +
 //удаление по значению всех (?вернуть кол-во)       +
 //3 конструктора                                    +
-//добавление списка(вашего) в конец
-//добавление списка в начало
-//добавление списка по индексу
+//добавление списка(вашего) в конец                 +
+//добавление списка в начало                        +  
+//добавление списка по индексу                      +
 

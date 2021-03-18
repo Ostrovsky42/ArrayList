@@ -1,0 +1,8 @@
+C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.AssemblyInfoInputs.cache
+C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.AssemblyInfo.cs
+C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.csproj.CoreCompileInputs.cache
+C:\Users\Serj\source\repos\ArrayList\ArrayList\bin\Debug\netstandard2.0\ArrayList.deps.json
+C:\Users\Serj\source\repos\ArrayList\ArrayList\bin\Debug\netstandard2.0\ArrayList.dll
+C:\Users\Serj\source\repos\ArrayList\ArrayList\bin\Debug\netstandard2.0\ArrayList.pdb
+C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.dll
+C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.pdb
