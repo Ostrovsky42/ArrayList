@@ -56,22 +56,18 @@ namespace ArrayList
         }       
         public void AddInFront(int value)
         {
-
             if (Length == _array.Length)
             {
                 UpSize();
             }
-            Length++;
-            int[] tmpArray = new int[_array.Length];
-            tmpArray[0] = value;
+            Length++;                        
             for (int i = 0; i < Length; i++)
             {
-                tmpArray[i + 1] = _array[i];//Отдельный метод и 
+                _array[Length-i] = _array[Length-i-1];//Отдельный метод и 
             }
-
-            _array = tmpArray;
-        }
-       
+            _array[0] = value;
+                       
+        }       
         public void AddByIndex(int value, int index)
         {
             if (index > Length)
@@ -82,7 +78,7 @@ namespace ArrayList
             {
                 UpSize();
             }
-            for (int i = Length - 1; i >= index; --i)
+            for (int i = Length - 1; i >= index; i--)
             {
                 _array[i + 1] = _array[i];
             }
@@ -97,18 +93,29 @@ namespace ArrayList
                 DownSize();
             }
         }
-        public void RemoveFront()
+        public void RemoveFromTheEnd(int n)
         {
-
-            Length--;
-            for (int i = 0; i < Length; i++)
+            if (n > Length)
             {
-                _array[i] = _array[i + 1];
+                throw new Exception($"Невозможно удалить {n} элементов из списка длинной {Length} элементов");
             }
+            Length -= n;
             if (Length <= _array.Length / 2)
             {
                 DownSize();
             }
+        }
+        public void RemoveFront()
+        {
+            RemoveByIndex(0);
+        }
+        public void RemoveFront(int n)
+        {
+            if (n > Length)
+            {
+                throw new Exception($"Невозможно удалить {n} элементов из списка длинной {Length} элементов");
+            }
+            RemoveByIndex(0, n);
         }
         public void RemoveByIndex(int index)
         {
@@ -128,38 +135,9 @@ namespace ArrayList
             }
 
         }
-        public void RemoveFromTheEnd(int n)       //отдельный тест
-        {
-            if (n > Length)
-            {
-                throw new Exception($"Невозможно удалить {n} элементов из списка длинной {Length} элементов");
-            }
-            Length -= n;
-            if (Length <= _array.Length / 2)
-            {
-                DownSize();
-            }
-        }                  
-        public void RemoveFront(int n)
-        {
-            if (n > Length)
-            {
-                throw new Exception($"Невозможно удалить {n} элементов из списка длинной {Length} элементов");
-            }
-            Length -= n;
-            for (int i = 0; i < Length; i++)
-            {
-                _array[i] = _array[i + n];
-            }
-            if (Length <= _array.Length / 2)
-            {
-                DownSize();
-            }
-        }                 
-
         public void RemoveByIndex(int index, int n)
         {
-            if (index > Length-1)
+            if (index > Length - 1)
             {
                 throw new IndexOutOfRangeException();
             }
@@ -167,17 +145,12 @@ namespace ArrayList
             {
                 throw new Exception($"Невозможно удалить {n} элементов n>(Lenght-index)");
             }
-           
-            for (int i = index + n; i < Length; i++)
+
+            for (int i = 0; i < n; i++)
             {
-                _array[i - n] = _array[i];
+                RemoveByIndex(index);
             }
-            Length -= n;
-            if (Length <= _array.Length / 2)
-            {
-                DownSize();
-            }
-        }     
+        }                           
         public int GetFirstIndexByValue(int value)
         {
             int index = -1;
@@ -258,7 +231,7 @@ namespace ArrayList
             for (int i = 0; i <Length - 1; i++)
             {
                 int min = i;
-                for (int j = i + 1; j <Length; j++)
+                for (int j = i + 1; j < Length; j++)
                 {
                     if (_array[j] < _array[min])
                         min = j;
@@ -315,6 +288,7 @@ namespace ArrayList
                 } while (_array[i] == value);
             }
         }
+
         public void AddList(ArrayList list)
         {
             int j = 0;
@@ -334,7 +308,6 @@ namespace ArrayList
             _array = tmpArray;
             Length += list.Length;
         }
-
         public void AddListFromTheBeing(ArrayList list)
         {
             int j = 0;
@@ -354,7 +327,6 @@ namespace ArrayList
             _array = tmpArray;
             Length += list.Length;
         }
-
         public void AddListByIndex(ArrayList list, int index)
         {
             if (index > Length)
@@ -446,30 +418,30 @@ namespace ArrayList
 
     }
                                             //  Состояние             Тесты
-//добавление значения в конец                       +                   
-//добавление значения в начало                      +
-//добавление значения по индексу                    +
-//удаление из конца одного элемента                 +
-//удаление из начала одного элемента                +
-//удаление по индексу одного элемента               +
-//удаление из конца N элементов                     +
-//удаление из начала N элементов                    +
-//удаление по индексу N элементов                   +
-//вернуть длину                                     +
-//доступ по индексу                                 +
-//первый индекс по значению                         +
-//изменение по индексу                              +
-//реверс (123 -> 321)                               + 
-//поиск значения максимального элемента             +
-//поиск значения минимального элемента              +
-//поиск индекс максимального элемента               +
-//поиск индекс минимального элемента                +
-//сортировка по возрастанию                         +
-//сортировка по убыванию                            +
-//удаление по значению первого (?вернуть индекс)    +
-//удаление по значению всех (?вернуть кол-во)       +
-//3 конструктора                                    +
-//добавление списка(вашего) в конец                 +
-//добавление списка в начало                        +  
-//добавление списка по индексу                      +
-
+//добавление значения в конец                       +                   +   
+//добавление значения в начало                      +                   +
+//добавление значения по индексу                    +                   +
+//удаление из конца одного элемента                 +                   +
+//удаление из начала одного элемента                +                   +
+//удаление по индексу одного элемента               +                   +
+//удаление из конца N элементов                     +                   +
+//удаление из начала N элементов                    +                   +
+//удаление по индексу N элементов                   +                   +
+//вернуть длину                                     +                   +
+//доступ по индексу                                 +                   +
+//первый индекс по значению                         +                   +
+//изменение по индексу                              +                   +
+//реверс (123 -> 321)                               +                   +
+//поиск значения максимального элемента             +                   +
+//поиск значения минимального элемента              +                   +
+//поиск индекс максимального элемента               +                   +
+//поиск индекс минимального элемента                +                   +
+//сортировка по возрастанию                         +                   +
+//сортировка по убыванию                            +                   +
+//удаление по значению первого (?вернуть индекс)    +                   +
+//удаление по значению всех (?вернуть кол-во)       +                   +   
+//3 конструктора                                    +                   +
+//добавление списка(вашего) в конец                 +                   +
+//добавление списка в начало                        +                   +
+//добавление списка по индексу                      +                   +
+    
