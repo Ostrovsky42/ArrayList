@@ -112,28 +112,23 @@ namespace ArrayList
         }
         public void RemoveByIndex(int index)
         {
+
             if (index > Length - 1)
             {
                 throw new IndexOutOfRangeException();
             }
-            int j = 0;
-            Length--;
-            for (int i = 0; i < Length; i++)
+            for (int i = index; i < Length; i++)
             {
-                if (i == index)
-                {
-                    j++;
-                }
-                _array[i] = _array[j];
-                j++;
+                _array[i] = _array[i + 1];
             }
+            Length--;
             if (Length <= _array.Length / 2)
             {
                 DownSize();
             }
 
         }
-        public void RemoveFromTheEnd(int n)
+        public void RemoveFromTheEnd(int n)       //отдельный тест
         {
             if (n > Length)
             {
@@ -161,16 +156,18 @@ namespace ArrayList
                 DownSize();
             }
         }                 
-        public void RemoveElementsByIndex(int index, int n)
+
+        public void RemoveByIndex(int index, int n)
         {
+            if (index > Length-1)
+            {
+                throw new IndexOutOfRangeException();
+            }
             if (n > Length - index)
             {
                 throw new Exception($"Невозможно удалить {n} элементов n>(Lenght-index)");
             }
-            if (index > Length - 1)
-            {
-                throw new IndexOutOfRangeException();
-            }
+           
             for (int i = index + n; i < Length; i++)
             {
                 _array[i - n] = _array[i];
@@ -305,15 +302,17 @@ namespace ArrayList
         }
         public void RemoveAllByValue(int value)
         {
-            int index = 0;
+            int index = 0;           
             for (int i = 0; i < Length; i++)
             {
-                if (_array[i] == value)
+                do
                 {
-                    index = i;
-                    RemoveByIndex(index);
-                }
-                
+                    if (_array[i] == value)
+                    {
+                        index = i;
+                        RemoveByIndex(index);
+                    }
+                } while (_array[i] == value);
             }
         }
         public void AddList(ArrayList list)
@@ -358,6 +357,10 @@ namespace ArrayList
 
         public void AddListByIndex(ArrayList list, int index)
         {
+            if (index > Length)
+            {
+                throw new IndexOutOfRangeException();
+            }
             int j = 0;
             int k = 0;
             int[] tmpArray = new int[(int)((Length + list.Length) * 1.33 + 1)];

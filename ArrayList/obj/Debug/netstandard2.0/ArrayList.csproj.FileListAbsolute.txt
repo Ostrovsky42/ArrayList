@@ -6,3 +6,4 @@ C:\Users\Serj\source\repos\ArrayList\ArrayList\bin\Debug\netstandard2.0\ArrayLis
 C:\Users\Serj\source\repos\ArrayList\ArrayList\bin\Debug\netstandard2.0\ArrayList.pdb
 C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.dll
 C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.pdb
+C:\Users\Serj\source\repos\ArrayList\ArrayList\obj\Debug\netstandard2.0\ArrayList.csprojAssemblyReference.cache
