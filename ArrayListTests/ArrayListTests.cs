@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System;
 
-namespace ArrayList
+namespace List
 
 {
     public class Tests
@@ -19,7 +19,7 @@ namespace ArrayList
         [TestCase(new int[] {1,2,3,4,5 }, 0, new int[]{ 1, 2, 3, 4, 5, 0})]
         [TestCase(new int[] { 5,4,3,2,1 }, 0, new int[]{ 5, 4, 3, 2, 1,0 })]
        
-        public void AddTestTest(int[] baseArray, int value, int[] expectedArray)
+        public void AddTest(int[] baseArray, int value, int[] expectedArray)
         {
             ArrayList expected = new ArrayList(expectedArray);
 
@@ -61,11 +61,11 @@ namespace ArrayList
         [TestCase(2,0,6)]
         public static void AddByIndexTestIndexOutOfRangeException(int mockNum, int value,int index) //GWT
         {
-            Assert.Throws<IndexOutOfRangeException>(() =>
+            Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
-                ArrayList arr = new ArrayList(GetMock(mockNum));
-                arr.AddByIndex(value, index);
-            });
+                ArrayList arr = new ArrayList((int[])GetMock((int)mockNum));
+                arr.AddByIndex((int)value, (int)index);
+            }));
         }
 
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 },  new int[] { 1, 2, 3, 4, 5, 6 })]
@@ -112,11 +112,11 @@ namespace ArrayList
         [TestCase(2, 6)]
         public static void RemoveByIndexTestIndexOutOfRangeException(int mockNum,  int index)
         {
-            Assert.Throws<IndexOutOfRangeException>(() =>
+            Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
-                ArrayList arr = new ArrayList(GetMock(mockNum));
-                arr.RemoveByIndex( index);
-            });
+                ArrayList arr = new ArrayList((int[])GetMock((int)mockNum));
+                arr.RemoveByIndex( (int)index);
+            }));
         }
 
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3, new int[] { 1, 2, 3, 4,  })]
@@ -138,11 +138,11 @@ namespace ArrayList
         [TestCase(2, 10)]
         public static void RemoveFromTheEndTestIndexOutOfRangeException(int mockNum,int n)
         {
-            Assert.Throws<Exception>(() =>
-            {                
-                ArrayList arr = new ArrayList(GetMock(mockNum));
+            Assert.Throws<Exception>((TestDelegate)(() =>
+            {
+                ArrayList arr = new ArrayList((int[])GetMock((int)mockNum));
                 arr.RemoveFromTheEnd(n);
-            });
+            }));
         }
 
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3, new int[] {  4, 5, 6, 7 })]
@@ -162,11 +162,11 @@ namespace ArrayList
         [TestCase(2, 11)]
         public static void RemoveFrontTestException(int mockNum, int n)
         {
-            Assert.Throws<Exception>(() =>
+            Assert.Throws<Exception>((TestDelegate)(() =>
             {
-                ArrayList arr = new ArrayList(GetMock(mockNum));
+                ArrayList arr = new ArrayList((int[])GetMock((int)mockNum));
                 arr.RemoveFront(n);
-            });
+            }));
         }
 
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 2,4, new int[] { 1, 2, 7 })]
@@ -187,12 +187,12 @@ namespace ArrayList
         [TestCase(2, 7,8)]
         public static void RemoveByIndexTestIndexOutOfRangeException(int mockNum, int index, int n)
         {
-            Assert.Throws<IndexOutOfRangeException>(() =>
+            Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
 
-                ArrayList arr = new ArrayList(GetMock(mockNum));
-                arr.RemoveByIndex(index,n);
-            });
+                ArrayList arr = new ArrayList((int[])GetMock((int)mockNum));
+                arr.RemoveByIndex(index, n);
+            }));
         } 
 
         [TestCase(2, 1,20)]
@@ -200,11 +200,11 @@ namespace ArrayList
         [TestCase(1, 2,19)]
         public static void RemoveByIndexTestException(int mockNum, int index, int n)
         {
-            Assert.Throws<Exception>(() =>
+            Assert.Throws<Exception>((TestDelegate)(() =>
             {
-                ArrayList arr = new ArrayList(GetMock(mockNum));
-                arr.RemoveByIndex(index,n);
-            });
+                ArrayList arr = new ArrayList((int[])GetMock((int)mockNum));
+                arr.RemoveByIndex(index, n);
+            }));
         }
 
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 4, 3 )]
@@ -372,12 +372,12 @@ namespace ArrayList
         [TestCase(2, 10)]
         public static void AddListByIndexTestIndexOutOfRangeException(int mockNum, int index)
         {
-            Assert.Throws<IndexOutOfRangeException>(() =>
+            Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
-                ArrayList addList = new ArrayList(mockNum);
-                ArrayList arr = new ArrayList(GetMock(mockNum));
+                ArrayList addList = new ArrayList((int)mockNum);
+                ArrayList arr = new ArrayList((int[])GetMock((int)mockNum));
                 arr.AddListByIndex(addList, index);
-            });
+            }));
         }
 
 

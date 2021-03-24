@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ArrayList
+namespace List
 {
     public class ArrayList
     {
