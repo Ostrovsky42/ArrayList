@@ -58,8 +58,8 @@ namespace List
 
         [TestCase(0,0,1)]
         [TestCase(1,0,7)]
-        [TestCase(2,0,6)]
-        public static void AddByIndexTestIndexOutOfRangeException(int mockNum, int value,int index) //GWT
+        [TestCase(2,0,6)] 
+        public static void AddByIndexWhenIndexOutOfRangeIndexOutOfRangeException(int mockNum, int value,int index) //GWT
         {
             Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
@@ -110,7 +110,7 @@ namespace List
         [TestCase(0, 1)]
         [TestCase(1, 7)]
         [TestCase(2, 6)]
-        public static void RemoveByIndexTestIndexOutOfRangeException(int mockNum,  int index)
+        public static void RemoveByIndexWhenIndexOutOfRangeIndexOutOfRangeException(int mockNum,  int index)
         {
             Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
@@ -136,7 +136,7 @@ namespace List
         [TestCase(0, 1)]
         [TestCase(1, 6)]
         [TestCase(2, 10)]
-        public static void RemoveFromTheEndTestIndexOutOfRangeException(int mockNum,int n)
+        public static void RemoveFromTheEndWhenIndexOutOfRangeIndexOutOfRangeException(int mockNum,int n)
         {
             Assert.Throws<Exception>((TestDelegate)(() =>
             {
@@ -185,7 +185,7 @@ namespace List
         [TestCase(0, 1,1)]
         [TestCase(1, 5,1)]
         [TestCase(2, 7,8)]
-        public static void RemoveByIndexTestIndexOutOfRangeException(int mockNum, int index, int n)
+        public static void RemoveByIndexWhenIndexOutOfRangeIndexOutOfRangeException(int mockNum, int index, int n)
         {
             Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
@@ -198,7 +198,7 @@ namespace List
         [TestCase(2, 1,20)]
         [TestCase(1, 4,10)]
         [TestCase(1, 2,19)]
-        public static void RemoveByIndexTestException(int mockNum, int index, int n)
+        public static void RemoveByIndexWhenNIsMoreThanAcceptableException(int mockNum, int index, int n)//
         {
             Assert.Throws<Exception>((TestDelegate)(() =>
             {
@@ -370,7 +370,7 @@ namespace List
         [TestCase(0, 1)]
         [TestCase(1, 7)]
         [TestCase(2, 10)]
-        public static void AddListByIndexTestIndexOutOfRangeException(int mockNum, int index)
+        public static void AddListByIndexWhenIndexOutOfRangeIndexOutOfRangeException(int mockNum, int index)
         {
             Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {

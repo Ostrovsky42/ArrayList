@@ -35,9 +35,10 @@ namespace List
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase(new int[] {}, 0, 0, new int[] { 0})]
         [TestCase(new int[] { 1, 1, 1, 1, 1 }, 0, 3, new int[] { 1, 1, 1, 0, 1, 1 })]
         [TestCase(new int[] { 1, 1, 1, 1, 1 }, 0, 5, new int[] { 1, 1, 1, 1, 1, 0 })]
-        [TestCase(new int[] { }, 0, 0, new int[] { 0 })]
+        [TestCase(new int[] { 1, 1, 1, 1, 1 }, 0, 0, new int[] { 0,1, 1, 1, 1, 1 })]
         public void AddByIndexTest(int[] baseArray, int value, int index, int[] expectedArray)
         {
             LinkedList expected = new LinkedList(expectedArray);
@@ -73,9 +74,9 @@ namespace List
             Assert.AreEqual(expected, actual);
         }
 
+        [TestCase(new int[] { 1 }, new int[] { })]
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, new int[] { 2, 3, 4, 5, 6, 7 })]
         [TestCase(new int[] { 7, 6, 5, 4, 3, 2, 1 }, new int[] { 6, 5, 4, 3, 2, 1 })]
-        [TestCase(new int[] { 1 }, new int[] { })]
         public void RemoveFrontTest(int[] baseArray, int[] expectedArray)
         {
             LinkedList expected = new LinkedList(expectedArray);
@@ -112,8 +113,8 @@ namespace List
         }
         */
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3, new int[] { 1, 2, 3, 4, })]
-        [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 6, new int[] { 1 })]
-        [TestCase(new int[] { 1, 2, 3, 4, 5 }, 5, new int[] { })]
+        [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 6, new int[] { 1 })]     
+        [TestCase(new int[] { 10, 2, 3, 4, 5 }, 5, new int[] { })]
         public void RemoveFromTheEndTest(int[] baseArray, int n, int[] expectedArray)
         {
             LinkedList expected = new LinkedList(expectedArray);
@@ -174,9 +175,9 @@ namespace List
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase(0, 1, 1)]
-        [TestCase(1, 5, 1)]
-        [TestCase(2, 7, 8)]
+        //[TestCase(0, 1, 1)]
+        //[TestCase(1, 5, 1)]
+        //[TestCase(2, 7, 8)]
         //public static void RemoveByIndexTestIndexOutOfRangeException(int mockNum, int index, int n)
         //{
         //    Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
@@ -198,10 +199,11 @@ namespace List
         //        arr.RemoveByIndex(index, n);
         //    }));
         //}
-        
+
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 4, 3)]
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 2, 1)]
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 7, 6)]
+
         public void GetFirstIndexByValueTest(int[] baseArray, int value, int expected)
         {
             LinkedList arr = new LinkedList(baseArray);
@@ -222,7 +224,7 @@ namespace List
 
             Assert.AreEqual(expected, actual);
         }
-        /*
+        
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 7)]
         [TestCase(new int[] { 0, 10, 100, 1000 }, 1000)]
         [TestCase(new int[] { 1000, 100, 10, 0 }, 1000)]
@@ -262,7 +264,7 @@ namespace List
             int actual = list.IndexByMinValue();
             Assert.AreEqual(expected, actual);
         }
-
+        /*
         [TestCase(new int[] { 7, 6, 5, 4, 3, 2, 1 }, new int[] { 1, 2, 3, 4, 5, 6, 7 })]
         [TestCase(new int[] { 0, 10000, 100, 1000 }, new int[] { 0, 100, 1000, 10000 })]
         [TestCase(new int[] { 1000, 100, 10, 0 }, new int[] { 0, 10, 100, 1000 })]
@@ -288,7 +290,7 @@ namespace List
 
             Assert.AreEqual(expected, actual);
         }
-
+*/
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 4, new int[] { 1, 2, 3, 5, 6, 7 })]
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 2, new int[] { 1, 3, 4, 5, 6, 7 })]
         [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 5, new int[] { 1, 2, 3, 4, 6, 7 })]
@@ -354,7 +356,7 @@ namespace List
             LinkedList addList = new LinkedList(addArray);
             LinkedList actual = new LinkedList(baseArray);
 
-            actual.AddListByIndex(addList, index);
+          actual.AddListByIndex(addList, index);
 
             Assert.AreEqual(expected, actual);
         }
@@ -362,7 +364,7 @@ namespace List
         [TestCase(0, 1)]
         [TestCase(1, 7)]
         [TestCase(2, 10)]
-        public static void AddListByIndexTestIndexOutOfRangeException(int mockNum, int index)
+       /* public static void AddListByIndexTestIndexOutOfRangeException(int mockNum, int index)
         {
             Assert.Throws<IndexOutOfRangeException>((TestDelegate)(() =>
             {
